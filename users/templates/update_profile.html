@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block title %}User - Profile - Edit - {{ profile.user.username }}{% endblock %}
+
+{% block content %}
+{% if request.user == profile.user %}
+<h1>Edit your Bio</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-secondary">Confirm</button>
+{% else %}
+<h1>You don't have permission to edit this post.</h1>
+{% endif %}
+{% endblock %}

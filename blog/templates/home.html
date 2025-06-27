@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %}My Blog - Posts{% endblock %} {% block content %}
+<h1>Posts</h1>
+
+<!--要引用链接时，用urls中的name-->
+<!--格式：url 'name' -->
+
+<br/>
+<br/>
+<ul>
+    {% for post in object_list %}
+        {% if post.is_visible %}
+        <li><a href="{% url 'post-detail' post.pk %}">{{ post.title }}</a> - {{ post.author }} {% if request.user == post.author %} <small><a href="{% url 'edit-post' post.pk %}">[edit] </a><a href="{% url 'delete-post' post.pk %}">[delete] </a></small> {% endif %} </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endblock %}

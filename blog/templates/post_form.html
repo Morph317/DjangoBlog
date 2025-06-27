@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block title %}My Blog - Submit {% endblock %}
+{% block content %}
+<h1>Submit a Post</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-secondary">Submit</button>
+{% endblock %}

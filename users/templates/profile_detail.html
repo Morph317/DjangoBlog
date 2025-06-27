@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block title %}User - Profile - {{ profile.user.username }}{% endblock %} {% block content %}
+<h1>{{ profile.user }}</h1>
+<hr>
+<small>Bio:</small>{% if request.user == profile.user %}<small><a href="{% url 'edit-profile' profile.user.username %}">[edit] </a></small>{% endif %}<br/>
+
+<br> {{ profile.bio }}
+
+<br>
+<br>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a> {% endblock %}
